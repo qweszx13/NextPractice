@@ -1,4 +1,5 @@
 import './globals.css'
+import Link from "next/link";
 
 export const metadata = {
   title: 'Create Next App',
@@ -8,6 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <div className="navbar">
+        <Link href="/">홈</Link>
+        <Link href="/list">List</Link>
+      </div>
       <body>{children}</body>
     </html>
   )
