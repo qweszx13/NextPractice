@@ -7,6 +7,7 @@ import {age, name} from "./data.js";
 
 
 export default function Cart() {
+  let cart = ["Tomatoes", "Pasta"]
   return (
     <div>
       <h4 className="title">Cart</h4>
@@ -15,19 +16,34 @@ export default function Cart() {
         <p>$40</p>
         <p>1개</p>
       </div>
-      <CartItem></CartItem>
+      {
+        cart.map((data,index)=>{
+          return(
+            <CartItem data={data} key={index}></CartItem>
+          )
+        })
+      }
+      <Banner title="현대"></Banner>
+      <Banner title="롯데"></Banner>
+      <ColorButton color="blue"></ColorButton>
     </div>
   )
 } 
 
 //next.js 에서는 client component , server component가 있음
 
+function ColorButton(props){
+  return <button style={{color:props.color}}>숙제</button>
+}
 
+function Banner(props){
+  return <h5>{props.title}카드 결제 행사중</h5>
+}
 
-function CartItem(){
+function CartItem(props){
   return(
     <div className="cart-item">
-      <p>상품명</p>
+      <p>{props.data}</p>
       <p>$40</p>
       <p>1개</p>
       <p>import test {age}</p>
