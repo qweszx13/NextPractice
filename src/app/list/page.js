@@ -11,8 +11,8 @@ export default function ListPage() {
   const structures = ['Tomato', 'Pasta', 'Coconut'];
   const costs = [40, 50, 100];
   const images = [food0, food1, food2];
-  const [amount, setAmount] = useState(0);
-  
+  const [amount, setAmount] = useState([0, 0, 0]);
+
   return (
     <div>
       <h4 className="title">structure List</h4>
@@ -22,9 +22,17 @@ export default function ListPage() {
             <div className="food" key={index}>
               <Image src={images[index]} alt={structure} className="food-img"></Image>
               <h4>{structure} is{costs[index]}$</h4>
-              <span> {amount} </span>
-              <button onClick={()=>{setAmount(amount+1)}}>+</button>
-              <button onClick={()=>{setAmount(amount-1)}}>-</button>
+              <span> {amount[index]} </span>
+              <button onClick={()=>{
+                let copy = [...amount]
+                copy[index]++
+                setAmount(copy)
+              }}>+</button>
+              <button onClick={()=>{
+                let copy = [...amount]
+                copy[index]--
+                setAmount(copy)
+              }}>-</button>
             </div>
           )
         })
